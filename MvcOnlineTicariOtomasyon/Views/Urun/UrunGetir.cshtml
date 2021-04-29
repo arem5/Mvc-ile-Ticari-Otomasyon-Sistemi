@@ -1,0 +1,45 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Urun
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Urun Güncelleme Sayfası </h2>
+<br />
+
+@using (Html.BeginForm("UrunGuncelle", "Urun", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.UrunID) //Güncelleme işlemince null değere göndermemesi için
+
+    @Html.LabelFor(x => x.UrunAd)
+    @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.UrunAd, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.Marka)
+    @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Marka, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.Stok)
+    @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.AlisFiyatı)
+    @Html.TextBoxFor(x => x.AlisFiyatı, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.SatisFiyatı)
+    @Html.TextBoxFor(x => x.SatisFiyatı, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Kategori) @*Burada kategori tablosuna bağımısız bir Id ile iş yparız*@
+    @*@Html.TextBoxFor(x => x.Kategoriid, new { @class = "form-control" })*@
+    @Html.DropDownListFor(x => x.Kategoriid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    
+    <br />
+    @Html.LabelFor(x => x.UrunGorsel)
+    @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Durum)
+    @Html.DropDownListFor(x => x.Durum, new[] { new SelectListItem { Text = "Var", Value = "True" }, new SelectListItem { Text = "Yok", Value = "False" } }, new { @class = "form-control" })
+    @*@Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })*@
+    <br />
+    <button class="btn btn-info"> Güncelle</button>
+}
+

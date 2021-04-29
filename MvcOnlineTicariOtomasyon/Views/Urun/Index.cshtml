@@ -1,0 +1,65 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar;
+@model List<Urun>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Ürünler</h2>
+<br />
+<table id="tbl1" class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ürün</th>
+            <th>Marka</th>
+            <th>Stok</th>
+            <th>Alış Fiyat</th>
+            <th>Satış Fiyat</th>
+            <th>Kategori</th>
+            <th>Görsel</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Detay</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.UrunID</td>
+                <td>@u.UrunAd</td>
+                <td>@u.Marka</td>
+                <td>@u.Stok</td>
+                <td>@u.AlisFiyatı</td>
+                <td>@u.SatisFiyatı</td>
+                <td>@u.Kategori.KategoriAd</td>  @*ismi ekleyebilmek için Siniflardan Virtual yaparız.*@
+                <td> <img src="@u.UrunGorsel" alt="Ürün Görsel" width="64" height="64" /> </td>
+                <td> <a href="/Urun/UrunSil/@u.UrunID" class="btn btn-danger">Sil</a></td>
+                <td> <a href="/Urun/UrunGetir/@u.UrunID" class="btn btn-success">Güncelle</a></td>
+                <td> <a href="/UrunDetay/Index/@u.UrunID" class="btn btn-outline-dark">Detay</a></td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<a href="/Urun/Yeniurun" class="btn btn-primary">Yeni Ürün</a>
+
+@*Hazır data table için*@
+
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

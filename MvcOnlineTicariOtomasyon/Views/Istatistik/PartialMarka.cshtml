@@ -1,0 +1,73 @@
+﻿@model  IEnumerable<MvcOnlineTicariOtomasyon.Models.Siniflar.SinifGrup3>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Marka Sayıları</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0" style="height: 300px;">
+        <table class="table table-head-fixed table-hover text-nowrap">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Marka</th>
+                    <th>Progress Bar</th>
+                    <th style="width: 40px">Adet</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int siraNo = 0;}
+                @foreach (var item in Model)
+                {
+    <tr>
+        <td>@{++siraNo;} @siraNo </td>
+        <td> @item.Marka</td>
+        <td>
+            @if (item.Toplam >= 1 && item.Toplam <= 3)
+            {
+<div class="progress progress-xs">
+    <div class="progress-bar bg-danger" style="width: 20%"></div>
+</div>}
+            @if (item.Toplam >= 4 && item.Toplam <= 6)
+            {
+<div class="progress progress-xs">
+    <div class="progress-bar bg-warning" style="width: 40%"></div>
+</div>}
+            @if (item.Toplam >= 7 && item.Toplam <= 10)
+            {
+<div class="progress progress-xs">
+    <div class="progress-bar bg-cyan" style="width: 60%"></div>
+</div>}
+            @if (item.Toplam > 11)
+            {
+<div class="progress progress-xs">
+    <div class="progress-bar bg-success" style="width: 80%"></div>
+</div>}
+
+
+        </td>
+
+        <td>
+            @if (item.Toplam >= 1 && item.Toplam <= 3)
+            {
+<span class="badge bg-danger">@item.Toplam</span>}
+
+            @if (item.Toplam >= 4 && item.Toplam <= 6)
+            {
+<span class="badge bg-warning">@item.Toplam</span>}
+
+            @if (item.Toplam >= 7 && item.Toplam <= 10)
+            {
+<span class="badge bg-cyan">@item.Toplam</span>}
+            @if (item.Toplam >= 11)
+            {
+<span class="badge bg-success">@item.Toplam</span>}
+
+        </td>
+    </tr>}
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

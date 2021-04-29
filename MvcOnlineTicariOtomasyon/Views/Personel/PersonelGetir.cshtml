@@ -1,0 +1,56 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Personel
+@{ ViewBag.Title = "PersonelGetir";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+<br />
+<h2>Personel Güncelleme Ekranı</h2>
+<br />
+
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.HiddenFor(x => x.PersonelID)
+    @Html.LabelFor(x => x.PersonelAd)
+    @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.PersonelAd, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.PersonelSoyad)
+    @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.PersonelSoyad, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("Telefon numarası")
+    @Html.TextBoxFor(x => x.PersonelPhone, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.PersonelPhone, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("E-mail adresi")
+    @Html.TextBoxFor(x => x.PersonelEmail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.PersonelEmail, "", new { @style = "color:red" })
+    <br />
+    @Html.Label("Mahalle")
+    @Html.TextBoxFor(x => x.PersonelMahalle, new { @class = "form-control" })
+    <br />
+    @Html.Label("Sokak")
+    @Html.TextBoxFor(x => x.PersonelSokak, new { @class = "form-control" })
+    <br />
+    @Html.Label("Apartman / Kapı No")
+    @Html.TextBoxFor(x => x.PersonelApartmanKapiNo, new { @class = "form-control" })
+    <br />
+    @Html.Label("Semt / Şehir")
+    @Html.TextBoxFor(x => x.PersonelSemtSehir, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.PersonelGorsel)
+    @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Departman)
+    @Html.DropDownListFor(x => x.Departmanid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Durum)
+    @Html.DropDownListFor(x => x.Durum, new[] { new SelectListItem { Text = "Çalışıyor", Value = "True" }, new SelectListItem { Text = "Çalışmıyor", Value = "False" } }, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info"> Kaydet</button>
+
+
+
+</div>}
+
+

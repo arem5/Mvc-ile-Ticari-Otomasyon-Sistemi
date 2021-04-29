@@ -1,0 +1,185 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Siniflar.SinifGrup>
+@{ ViewBag.Title = "KolayTablolar";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Simple Tables</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Analiz Tabloları</h1>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Kategori Tablosu</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                                <table class="table table-head-fixed table-hover text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Kategori Adı</th>
+                                            <th>Durum</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ int siraNo1 = 0;}
+                                        @foreach (var item in @ViewBag.kategoriIsim)
+                                        {
+                            <tr>
+                                <td>@{siraNo1++;} @siraNo1</td>
+                                <td>@item.KategoriAd</td>
+
+                                <td><span><i class="fas fa-calendar-check"></i></span></td>
+                            </tr>}
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <!-- PARTIAL VIEW-->
+                        @Html.Action("PartialDepartman", "Istatistik")
+                        <!-- PARTIAL VIEW -->
+                    </div>
+                    <!-- Müşteri Şehir Oranları -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Müşteri Şehir Oranları</h3>
+
+                            </div>
+                            <!-- ŞEHİRLER -->
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                                <table class="table table-head-fixed table-hover text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Şehir</th>
+                                            <th>Progress Bar</th>
+                                            <th style="width: 40px">Adet</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ int siraNo = 0;}
+                                        @foreach (var item in Model)
+                                        {
+                            <tr>
+                                <td>@{++siraNo;} @siraNo </td>
+                                <td> @item.Sehir</td>
+                                <td>
+                                    @if (item.Toplam == 1)
+                                    {
+                    <div class="progress progress-xs">
+                        <div class="progress-bar bg-danger" style="width: 20%"></div>
+                    </div>}
+                                    @if (item.Toplam == 2)
+                                    {
+                    <div class="progress progress-xs">
+                        <div class="progress-bar bg-warning" style="width: 40%"></div>
+                    </div>}
+                                    @if (item.Toplam == 3)
+                                    {
+                    <div class="progress progress-xs">
+                        <div class="progress-bar bg-cyan" style="width: 60%"></div>
+                    </div>}
+                                    @if (item.Toplam >= 4)
+                                    {
+                    <div class="progress progress-xs">
+                        <div class="progress-bar bg-success" style="width: 80%"></div>
+                    </div>}
+
+
+                                </td>
+
+                                <td>
+                                    @if (item.Toplam == 1)
+                                    {
+                    <span class="badge bg-danger">@item.Toplam</span>}
+
+                                    @if (item.Toplam == 2)
+                                    {
+                    <span class="badge bg-warning">@item.Toplam</span>}
+
+                                    @if (item.Toplam == 3)
+                                    {
+                    <span class="badge bg-cyan">@item.Toplam</span>}
+                                    @if (item.Toplam >= 4)
+                                    {
+                    <span class="badge bg-success">@item.Toplam</span>}
+
+                                </td>
+                            </tr>}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- ŞEHİRLER -->
+                        </div>
+                        <!-- PARTIAL VİEW MARKA-->
+                        @Html.Action("PartialMarka", "Istatistik")
+                        <!-- PARTIAL VİEW MARKA -->
+                    </div>
+                    <!-- Müşteri Şehir Oranları -->
+                </div>
+
+                <!-- PARTIAL VIEW SON ON SATIS-->
+                @Html.Action("PartialSatis", "Istatistik")
+                <!-- PARTIAL VIEW SON ON SATIS -->
+                <!-- PARTIAL VIEW URUN -->
+                @Html.Action("PartialUrun", "Istatistik")
+                <!-- PARTIAL VIEW URUN -->
+
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <!-- /.content-wrapper -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+</body>
+</html>
+
