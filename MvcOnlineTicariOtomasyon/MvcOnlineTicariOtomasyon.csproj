@@ -140,12 +140,21 @@
     <Compile Include="Controllers\SatisController.cs" />
     <Compile Include="Controllers\UrunController.cs" />
     <Compile Include="Controllers\UrunDetayController.cs" />
+    <Compile Include="Controllers\YapilacakController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202104291554347_Hata.cs" />
     <Compile Include="Migrations\202104291554347_Hata.designer.cs">
       <DependentUpon>202104291554347_Hata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105012140572_AddToDos.cs" />
+    <Compile Include="Migrations\202105012140572_AddToDos.designer.cs">
+      <DependentUpon>202105012140572_AddToDos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105012225008_AddToDosDateTime.cs" />
+    <Compile Include="Migrations\202105012225008_AddToDosDateTime.designer.cs">
+      <DependentUpon>202105012225008_AddToDosDateTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Siniflar\Admin.cs" />
@@ -162,6 +171,7 @@
     <Compile Include="Models\Siniflar\SinifGrup2.cs" />
     <Compile Include="Models\Siniflar\SinifGrup3.cs" />
     <Compile Include="Models\Siniflar\Urun.cs" />
+    <Compile Include="Models\Siniflar\Yapilacak.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2848,6 +2858,7 @@
     <Content Include="Views\Istatistik\PartialMarka.cshtml" />
     <Content Include="Views\Istatistik\PartialSatis.cshtml" />
     <Content Include="Views\Istatistik\PartialUrun.cshtml" />
+    <Content Include="Views\Yapilacak\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2878,6 +2889,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104291554347_Hata.resx">
       <DependentUpon>202104291554347_Hata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105012140572_AddToDos.resx">
+      <DependentUpon>202105012140572_AddToDos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105012225008_AddToDosDateTime.resx">
+      <DependentUpon>202105012225008_AddToDosDateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

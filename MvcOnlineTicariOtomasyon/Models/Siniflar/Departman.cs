@@ -16,6 +16,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "VarChar")]
         [StringLength(30,ErrorMessage ="Bu alan en fazla 30 karakter içermeli.")]
         [Required(ErrorMessage = "Bu alanı girmek zorundasınız.")]
+        [Display(Name = "Departman Adı")]
         public string DepartmanAd { get; set; }
         public bool Durum { get; set; }
 

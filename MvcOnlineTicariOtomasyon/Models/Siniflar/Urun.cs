@@ -16,6 +16,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName ="VarChar")]
         [StringLength(30, ErrorMessage = "En fazla 30 karakter yazabilirsiniz.")]
         [Required(ErrorMessage = "Bu alanı boş geçemesiniz.")]
+        [Display(Name = "Ürün Adı")]
         public string UrunAd { get; set; }
 
         [Column(TypeName = "VarChar")]
@@ -23,12 +24,15 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [Required(ErrorMessage = "Bu alanı boş geçemesiniz.")]
         public string Marka { get; set; }
         public short Stok { get; set; }
+        [Display(Name = "Alış Fiyatı")]
         public decimal AlisFiyatı { get; set; }
+        [Display(Name = "Satış Fiyatı")]
         public decimal SatisFiyatı { get; set; }
         public bool Durum { get; set; }
 
         [Column(TypeName = "VarChar")]
         [StringLength(250)]
+        [Display(Name = "Görsel Linki")]
         public string UrunGorsel { get; set; }
         public int Kategoriid { get; set; }
         public virtual Kategori Kategori { get; set; }  //Veri tabanında KAtegoriID ye dönüşür .Virtual yazarak kalıtım aldığımız sınıfların da değerlerine ulaşırız. Urun.Indexde Kategori ismi gelmesi için

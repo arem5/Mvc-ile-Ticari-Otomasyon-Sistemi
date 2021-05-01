@@ -16,20 +16,24 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "VarChar")]
         [StringLength(30,ErrorMessage ="En fazla 30 karakter yazabilirsiniz.")]
         [Required(ErrorMessage = "Bu alanı boş geçemesiniz.")]
+        [Display(Name = "İsim")]
         public string CariAd { get; set; }
 
         [Column(TypeName = "VarChar")]
         [StringLength(30,ErrorMessage = "En fazla 30 karakter yazabilirsiniz.")]
         [Required(ErrorMessage ="Bu alanı boş geçemesiniz.")]
+        [Display(Name = "Soyisim")]
         public string CariSoyad { get; set; }
 
         [Column(TypeName = "VarChar")]
         [StringLength(13,ErrorMessage = "En fazla 13 karakter yazabilirsiniz.")]
         [Required(ErrorMessage = "Bu alanı boş geçemesiniz.")]
+        [Display(Name = "Şehir")]
         public string CariSehir { get; set; }
 
         [Column(TypeName = "VarChar")]
-        [StringLength(50, ErrorMessage = "En fazla 50 karakter yazabilirsiniz.")]       
+        [StringLength(50, ErrorMessage = "En fazla 50 karakter yazabilirsiniz.")]
+        [Display(Name = "Email")]
         public string CariMail { get; set; }
 
         public bool Durum { get; set; }

@@ -16,6 +16,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "VarChar")]
         [StringLength(30,ErrorMessage ="Bu alan en fazla 30 karakter olabilir.")]
         [Required(ErrorMessage ="Bu alanı girmek zorundasınız.")]
+        [Display(Name = "Kategori Adı")]
         public string KategoriAd { get; set; }
         public ICollection<Urun> Uruns { get; set; } //İlişkilendirmek için C# kod bloğu.
                                                      //veri tabanında 's' takısı alır. Her kategoride birden fazla urun olabilir demek.
