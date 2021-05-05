@@ -68,8 +68,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             List<SelectListItem> deger1 = (from x in c.Uruns.ToList()
                                            select new SelectListItem
                                            {
-                                               Text = x.UrunAd,
-                                               Value = x.UrunAd
+                                               Text = x.UrunAd + " / " + x.Marka + "  --  Kalan Stok : " + x.Stok + "  --  Fiyat : " + x.SatisFiyatı,
+                                               Value = x.UrunID.ToString()
                                            }).ToList();
             ViewBag.dgr1 = deger1;
             return View();

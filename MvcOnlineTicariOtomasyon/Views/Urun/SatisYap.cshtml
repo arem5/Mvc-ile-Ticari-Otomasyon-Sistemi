@@ -1,0 +1,50 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.SatisHaraket
+@{
+    ViewBag.Title = "SatisYap";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>@ViewBag.urunAd Ürünü Satış Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+
+    @Html.LabelFor(x => x.Urun.UrunID)
+    <input type="text" name="UrunID" value="@ViewBag.id" placeholder="" class="form-control" readonly />
+    <br />
+    @Html.Label("Cari")
+    @Html.DropDownListFor(x => x.Cariid, (List<SelectListItem>)ViewBag.cari, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Personel)
+    @Html.DropDownListFor(x => x.Personelid, (List<SelectListItem>)ViewBag.personel, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.SatisAdet)
+    @*@Html.TextBoxFor(x => x.SatisAdet, new { @class = "form-control" })*@
+    <input type="number" name="SatisAdet" class="form-control" max="10" min="1" placeholder="Satış Adedi Giriniz.." id="adet" onchange="carp();" />
+    <br />
+    @Html.LabelFor(x => x.Fiyat)
+    <input type="text" name="SatisFiyatı" value="@ViewBag.urunFiyat" class="form-control" id="fiyat" onkeyup="carp();" />
+    <br />
+    @Html.LabelFor(x => x.ToplamTutar)
+    <input type="text" name="ToplamTutar" value="0" class="form-control" id="toplam" readonly />
+    <br />
+    @Html.LabelFor(x => x.SatisTarihi)
+    <input type="text" name="SatisTarihi" value="@ViewBag.tarih" class="form-control" readonly />
+
+
+    <br />
+    <button class="btn btn-info"> Satış Yap </button>
+</form>
+
+<script>
+    function carp() {
+        var adet = document.getElementById('adet').value;
+        var fiyat = document.getElementById('fiyat').value;
+        var toplam = parseInt(adet) * parseInt(fiyat);
+
+        if (!isNaN(parseInt(toplam))) {
+            document.getElementById('toplam').value = toplam;
+        }
+    }
+</script>

@@ -13,9 +13,8 @@
 <table id="tbl1" class="table table-striped" style="margin-top:15px;">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Seri No</th>
-            <th>Sıra No</th>
+            
+            <th>Seri / Sıra No</th>
             <th>Vergi Dairesi</th>
             <th>Tarih</th>
             <th>Saat</th>
@@ -32,15 +31,15 @@
         @foreach (var k in Model)
         {
         <tr>
-            <td>@k.FaturaID</td>
-            <td> @k.FaturaSeriNo </td>
-            <td> @k.FaturaSıraNo </td>
+           
+            <td> @k.FaturaSeriNo @k.FaturaSıraNo</td>
+           
             <td> @k.VergiDairesi </td>
             <td> @k.FaturaTarih.ToShortDateString() </td>
             <td> @k.FaturaSaat </td>
             <td> @k.TeslimEden </td>
             <td> @k.TeslimAlan </td>
-            <td> 100 </td>
+            <td> @k.ToplamTutar ₺ </td>
             <td> <a href="/Fatura/FaturaGetir/@k.FaturaID" class="btn btn-success"> Güncelle</a> </td>
             <td> <a href="/Fatura/FaturaDetay/@k.FaturaID" class="btn btn-info"> Detay </a> </td>
         </tr>

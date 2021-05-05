@@ -76,6 +76,44 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(degerler);
         }
 
+        [HttpGet]
+        public ActionResult SatisYap(int id)
+        {
+            List<SelectListItem> cari = (from x in c.Carilers.ToList()
+                                         select new SelectListItem
+                                         {
+                                             Text = x.CariAd + " " + x.CariSoyad,
+                                             Value = x.CariID.ToString()
+                                         }).ToList();
+
+            List<SelectListItem> personel = (from x in c.Personels.ToList()
+                                             where x.Durum == true
+                                             select new SelectListItem
+                                             {
+                                                 Text = x.PersonelAd + " " + x.PersonelSoyad,
+                                                 Value = x.PersonelID.ToString()
+                                             }).ToList();
+
+            ViewBag.cari = cari;
+            ViewBag.personel = personel;
+
+            var urun = c.Uruns.Find(id);
+            ViewBag.id = urun.UrunID;
+            ViewBag.urunAd = urun.UrunAd;
+            ViewBag.urunFiyat = urun.SatisFiyatı;
+            ViewBag.tarih = DateTime.Now;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SatisYap(SatisHaraket s)
+        {
+            s.SatisTarihi = DateTime.Parse(DateTime.Now.ToString());
+            c.SatisHarakets.Add(s);
+            c.SaveChanges();
+            return RedirectToAction("Index", "Satis");
+        }
+
         private List<SelectListItem> ForDownBox()
         {
             List<SelectListItem> deger1 = (from x in c.Kategoris.ToList()
@@ -83,8 +121,10 @@ namespace MvcOnlineTicariOtomasyon.Controllers
                                            {
                                                Text = x.KategoriAd, //Dropdownda ki veri
                                                Value = x.KategoriID.ToString()  //Arka plandaki değer
-                                           }).ToList();         
+                                           }).ToList();
             return deger1;
         }
+
+
     }
 }

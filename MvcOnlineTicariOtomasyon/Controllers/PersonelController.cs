@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,6 +26,11 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult PersonelEkle(Personel p)
         {
+            if (Request.Files.Count > 0)
+            {
+                GorselEkle(p);
+            }
+
             if (!ModelState.IsValid)
             {
                 ViewBag.dgr1 = ForDownBox();
@@ -36,7 +42,6 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return RedirectToAction("Index");
         }
 
-
         public ActionResult PersonelGetir(int id)
         {
             ViewBag.dgr1 = ForDownBox();
@@ -45,6 +50,11 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         }
         public ActionResult PersonelGuncelle(Personel p)
         {
+            if (Request.Files.Count > 0)
+            {
+                GorselEkle(p);
+            }
+
             if (!ModelState.IsValid)
             {
                 ViewBag.dgr1 = ForDownBox();
@@ -78,6 +88,13 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return deger1;
         }
 
-
+        private void GorselEkle(Personel p)
+        {
+            string dosyaAdi = Path.GetFileName(Request.Files[0].FileName);
+            string uzanti = Path.GetExtension(Request.Files[0].FileName);
+            string yol = "~/Image/" + dosyaAdi + uzanti;
+            Request.Files[0].SaveAs(Server.MapPath(yol));
+            p.PersonelGorsel = "/Image/" + dosyaAdi + uzanti;
+        }
     }
 }
